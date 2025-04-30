@@ -1,15 +1,27 @@
 from setuptools import setup, find_packages
 
 setup(name='gym_tictactoe',
-      version='0.0.2',
-      description='Light TicTacToe OpenAi Gym environment',
-      url='https://github.com/ClementRomac/gym-tictactoe',
+      version='0.1.1',
+      description='Light TicTacToe Gymnasium environment',
       author='Clement Romac',
       author_email='clement.romac@gmail.com',
-      license='MIT License',
+      maintainer="César Guzmán",
+      maintainer_email="cesarluisg@gmail.com",
+      url="https://github.com/cesarluisg/gym-tictactoe",
+      license="MIT",
       packages=find_packages(),
-      package_data={'': ['settings.xml']},
-      zip_safe=False,
-      install_requires=['gym>=0.2.3'],
-      dependency_links=[]
-      )
+      #include_package_data=True,
+      package_data={              
+         "gym_tictactoe": ["settings.xml"],
+      },      
+      install_requires=[
+        "gymnasium>0.26.0",
+        "numpy"
+      ],
+      dependency_links=[],
+      entry_points={
+        "gymnasium.envs": [
+            "TicTacToe-v0 = gym_tictactoe.tic_tac_toe:TicTacToeEnv",
+        ],
+      },
+)
